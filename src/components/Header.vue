@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <b-nav vertical tabs>
-      <div class="header">Test Your Computer Science Knowledge</div>
+      <div class="header">Can Ram answer these sports related questions? Hullo</div>
       <div class="counter">Score: {{ numCorrect }} / {{ numTotal }}</div>
     </b-nav>
   </div>
