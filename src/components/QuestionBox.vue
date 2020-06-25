@@ -42,23 +42,10 @@
             variant="primary"
             href="#"
           >Submit</b-button>
-          <b-button @click="next" variant="success" href="#" :disabled="!submitted">Next</b-button>
-          <span v-if="submitted">
-            <div id="arrowAnim">
-              <div class="arrowSliding">
-                <div class="arrow"></div>
-              </div>
-              <div class="arrowSliding delay1">
-                <div class="arrow"></div>
-              </div>
-              <div class="arrowSliding delay2">
-                <div class="arrow"></div>
-              </div>
-              <div class="arrowSliding delay3">
-                <div class="arrow"></div>
-              </div>
-            </div>
-          </span>
+          <b-button @click="next" variant="success" href="#" :disabled="!submitted">
+            Next
+            <i v-if="submitted" class="fa fa-arrow-circle-o-right" style="font-size:20px"></i>
+          </b-button>
         </div>
       </b-jumbotron>
     </div>
@@ -163,77 +150,4 @@ export default {
   position: relative;
 }
 
-#arrowAnim {
-  width: 80vw;
-  height: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.arrow {
-  width: 3vh;
-  height: 3vh;
-  border: 0.5vw solid;
-  border-color: black transparent transparent black;
-  transform: rotate(-45deg);
-}
-
-.arrowSliding {
-  position: absolute;
-  top: 55px;
-  left: 400px;
-  -webkit-animation: slide 1s linear infinite;
-  animation: slide 2s linear infinite;
-}
-
-.delay1 {
-  -webkit-animation-delay: 0.5s;
-  animation-delay: 0.5s;
-}
-.delay2 {
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-}
-.delay3 {
-  -webkit-animation-delay: 1.5s;
-  animation-delay: 1.5s;
-}
-
-@-webkit-keyframes slide {
-  0% {
-    opacity: 0;
-    transform: translateX(6vw);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(4vw);
-  }
-  80% {
-    opacity: 1;
-    transform: translateX(-4vw);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-6vw);
-  }
-}
-@keyframes slide {
-  0% {
-    opacity: 0;
-    transform: translateX(6vw);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(4vw);
-  }
-  80% {
-    opacity: 1;
-    transform: translateX(-4vw);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-6vw);
-  }
-}
 </style>
