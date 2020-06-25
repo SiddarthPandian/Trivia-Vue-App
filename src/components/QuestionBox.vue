@@ -12,6 +12,9 @@
     <div v-else>
       <b-jumbotron>
         <template v-slot:lead>
+          <b>
+            <u>Question {{ myCounter }} / 10</u>
+          </b>
           <div v-html="currentQuestion.question"></div>
         </template>
 
@@ -42,7 +45,7 @@
             variant="primary"
             href="#"
           >Submit</b-button>
-          <b-button @click="next" variant="success" href="#" :disabled="!submitted">
+          <b-button @click="next(); incMyCount();" variant="success" href="#" :disabled="!submitted">
             Next
             <i v-if="submitted" class="fa fa-arrow-circle-o-right" style="font-size:20px"></i>
           </b-button>
@@ -65,7 +68,8 @@ export default {
     return {
       selectedIndex: null,
       correctIndex: null,
-      submitted: false
+      submitted: false,
+      myCounter: 1
     };
   },
   methods: {
@@ -93,6 +97,9 @@ export default {
     },
     reload() {
       location.reload();
+    },
+    incMyCount() {
+      this.myCounter += 1;
     }
   },
   computed: {
@@ -149,5 +156,4 @@ export default {
 .btncontainer {
   position: relative;
 }
-
 </style>

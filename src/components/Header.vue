@@ -2,7 +2,7 @@
   <div class="header-container">
     <b-nav vertical tabs>
       <div class="header">Test Your Computer Science Knowledge</div>
-      <div class="counter">Counter: {{ numCorrect }} / {{ numTotal }}</div>
+      <div class="counter">Score: {{ numCorrect }} / {{ numTotal }}</div>
     </b-nav>
   </div>
 </template>
