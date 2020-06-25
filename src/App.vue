@@ -10,6 +10,8 @@
             :currentQuestion="questions[index]"
             :next="next"
             :increment="increment"
+            :numCorrect="numCorrect"
+            :numTotal="numTotal"
           />
         </b-col>
       </b-row>
@@ -24,14 +26,14 @@ export default {
   name: "App",
   components: {
     Header,
-    QuestionBox,
+    QuestionBox
   },
   data() {
     return {
       questions: [],
       index: 0,
       numCorrect: 0,
-      numTotal: 0,
+      numTotal: 0
     };
   },
   methods: {
@@ -43,19 +45,19 @@ export default {
         this.numCorrect++;
       }
       this.numTotal++;
-    },
+    }
   },
   mounted: function() {
     fetch("https://opentdb.com/api.php?amount=10&category=18&type=multiple", {
-      method: "get",
+      method: "get"
     })
-      .then((response) => {
+      .then(response => {
         return response.json();
       })
-      .then((jsonResponse) => {
+      .then(jsonResponse => {
         this.questions = jsonResponse.results;
       });
-  },
+  }
 };
 </script>
 
@@ -65,11 +67,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 
 body {
-  background: url("./assets/computer.jpg");
+  background: url("./assets/newComputer.jpg");
+  background-size: 100%;
 }
 </style>
