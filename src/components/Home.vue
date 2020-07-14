@@ -5,6 +5,7 @@
       lead="Test your knowledge! Perfect for parties!"
       :class="Object.keys(this.$route.params).length !== 0 ? 'testing' : ''"
       class="jumbo"
+      text-variant="white"
     >
       <p>Choose any category</p>
       <router-link class="mybtn" to="/app/General/9" tag="b-button"
@@ -45,5 +46,8 @@ export default {};
 
 .jumbo {
   margin-top: 100px;
+  text-align: center;
+  background: none;
+  border: solid white;
 }
 </style>

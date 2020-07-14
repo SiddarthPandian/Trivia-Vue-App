@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <Header :quizType="this.$route.params.type" :numCorrect="numCorrect" :numTotal="numTotal" />
+    <Header
+      :quizType="this.$route.params.type"
+      :numCorrect="numCorrect"
+      :numTotal="numTotal"
+    />
 
     <b-container class="bv-example-row">
       <b-row>
@@ -28,14 +32,14 @@ export default {
   name: "App",
   components: {
     Header,
-    QuestionBox
+    QuestionBox,
   },
   data() {
     return {
       questions: [],
       index: 0,
       numCorrect: 0,
-      numTotal: 0
+      numTotal: 0,
     };
   },
   methods: {
@@ -47,19 +51,22 @@ export default {
         this.numCorrect++;
       }
       this.numTotal++;
-    }
+    },
   },
   mounted: function() {
-    fetch(`https://opentdb.com/api.php?amount=10&category=${this.$route.params.id}&type=multiple`, {
-      method: "get"
-    })
-      .then(response => {
+    fetch(
+      `https://opentdb.com/api.php?amount=10&category=${this.$route.params.id}&type=multiple`,
+      {
+        method: "get",
+      }
+    )
+      .then((response) => {
         return response.json();
       })
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         this.questions = jsonResponse.results;
       });
-  }
+  },
 };
 </script>
 
@@ -73,7 +80,7 @@ export default {
 }
 
 body {
-  background: url("./assets/newComputer.jpg");
+  background: url("./assets/trivia.jpg");
   background-size: 100%;
 }
 </style>

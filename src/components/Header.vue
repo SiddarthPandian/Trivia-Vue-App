@@ -1,9 +1,19 @@
 <template>
-  <div class="header-container">
-    <b-nav vertical tabs>
-      <div class="header">{{ quizType }} Trivia</div>
-      <div class="counter">Score: {{ numCorrect }} / {{ numTotal }}</div>
-    </b-nav>
+  <div>
+    <router-link
+      class="mybtn"
+      to="/"
+      tag="b-button"
+      style="float: left; background: none; border: solid white; position: absolute; left: 50px; top: 10px;"
+      ><i class="fa fa-arrow-circle-o-left" style="font-size:20px"></i>
+      Home</router-link
+    >
+    <div class="header-container">
+      <b-nav vertical tabs>
+        <div class="header">{{ quizType }} Trivia</div>
+        <div class="counter">Score: {{ numCorrect }} / {{ numTotal }}</div>
+      </b-nav>
+    </div>
   </div>
 </template>
 

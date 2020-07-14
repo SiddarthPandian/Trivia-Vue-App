@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="numTotal === 10 && submitted">
-      <b-jumbotron>
+    <div v-if="myCounter === 11 && !submitted">
+      <b-jumbotron class="myjumbo">
         You Scored {{ numCorrect }} / {{ numTotal }}
         <div>
           <b-button @click="reload" variant="primary">Retry</b-button>
@@ -11,7 +11,7 @@
     </div>
 
     <div v-else>
-      <b-jumbotron>
+      <b-jumbotron class="myjumbo">
         <template v-slot:lead>
           <b>
             <u>Question {{ myCounter }} / 10</u>
@@ -20,7 +20,7 @@
         </template>
 
         <hr class="my-4" />
-        <b-list-group>
+        <b-list-group class="liststyle">
           <b-list-group-item
             v-for="(answer, index) in answers"
             :key="index"
@@ -69,7 +69,6 @@
             ></i>
           </b-button>
         </div>
-        <router-link class="mybtn" to="/" tag="b-button">Home</router-link>
       </b-jumbotron>
     </div>
   </div>
@@ -83,6 +82,7 @@ export default {
     increment: Function,
     numCorrect: Number,
     numTotal: Number,
+    index: Number,
   },
   data() {
     return {
@@ -175,5 +175,9 @@ export default {
 
 .btncontainer {
   position: relative;
+}
+
+.myjumbo {
+  padding: 32px 32px;
 }
 </style>
