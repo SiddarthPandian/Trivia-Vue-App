@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :numCorrect="numCorrect" :numTotal="numTotal" />
+    <Header :quizType="this.$route.params.type" :numCorrect="numCorrect" :numTotal="numTotal" />
 
     <b-container class="bv-example-row">
       <b-row>
@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted: function() {
-    fetch("https://opentdb.com/api.php?amount=10&category=17&type=multiple", {
+    fetch(`https://opentdb.com/api.php?amount=10&category=${this.$route.params.id}&type=multiple`, {
       method: "get"
     })
       .then(response => {

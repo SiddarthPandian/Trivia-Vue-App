@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <b-nav vertical tabs>
-      <div class="header">212 you can do it skid</div>
+      <div class="header">{{ quizType }} Trivia</div>
       <div class="counter">Score: {{ numCorrect }} / {{ numTotal }}</div>
     </b-nav>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ["numCorrect", "numTotal"]
+  props: ["numCorrect", "numTotal", "quizType"],
 };
 </script>
 

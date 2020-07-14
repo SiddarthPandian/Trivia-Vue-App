@@ -25,15 +25,15 @@
             :key="index"
             @click.prevent="[!submitted ? selectAnswer(index) : void 0]"
             :class="[
-            !submitted && selectedIndex === index
-              ? 'selected'
-              : submitted && correctIndex === index
-              ? 'correct'
-              : submitted && correctIndex !== index && selectedIndex === index
-              ? 'incorrect'
-              : '',
-            submitted ? 'noHover' : '',
-          ]"
+              !submitted && selectedIndex === index
+                ? 'selected'
+                : submitted && correctIndex === index
+                ? 'correct'
+                : submitted && correctIndex !== index && selectedIndex === index
+                ? 'incorrect'
+                : '',
+              submitted ? 'noHover' : '',
+            ]"
           >
             <div v-html="answer"></div>
           </b-list-group-item>
@@ -44,12 +44,30 @@
             :disabled="selectedIndex === null || submitted"
             variant="primary"
             href="#"
-          >Submit</b-button>
-          <b-button @click="next(); incMyCount();" variant="success" href="#" :disabled="!submitted">
+            >Submit <i
+              v-if="selectedIndex !== null && !submitted"
+              class="fa fa-arrow-circle-o-right"
+              style="font-size:20px"
+            ></i
+          ></b-button>
+          <b-button
+            @click="
+              next();
+              incMyCount();
+            "
+            variant="success"
+            href="#"
+            :disabled="!submitted"
+          >
             Next
-            <i v-if="submitted" class="fa fa-arrow-circle-o-right" style="font-size:20px"></i>
+            <i
+              v-if="submitted"
+              class="fa fa-arrow-circle-o-right"
+              style="font-size:20px"
+            ></i>
           </b-button>
         </div>
+        <router-link class="mybtn" to="/" tag="b-button">Home</router-link>
       </b-jumbotron>
     </div>
   </div>
@@ -62,14 +80,14 @@ export default {
     next: Function,
     increment: Function,
     numCorrect: Number,
-    numTotal: Number
+    numTotal: Number,
   },
   data() {
     return {
       selectedIndex: null,
       correctIndex: null,
       submitted: false,
-      myCounter: 1
+      myCounter: 1,
     };
   },
   methods: {
@@ -100,7 +118,7 @@ export default {
     },
     incMyCount() {
       this.myCounter += 1;
-    }
+    },
   },
   computed: {
     answers() {
@@ -108,7 +126,7 @@ export default {
       answers.push(this.currentQuestion.correct_answer);
       answers = this.shuffle(answers);
       return answers;
-    }
+    },
   },
 
   watch: {
@@ -116,8 +134,8 @@ export default {
       this.selectedIndex = null;
       this.correctIndex = null;
       this.submitted = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
