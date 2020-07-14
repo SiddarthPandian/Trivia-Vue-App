@@ -5,6 +5,7 @@
         You Scored {{ numCorrect }} / {{ numTotal }}
         <div>
           <b-button @click="reload" variant="primary">Retry</b-button>
+          <router-link class="mybtn" to="/" tag="b-button">Home</router-link>
         </div>
       </b-jumbotron>
     </div>
@@ -44,7 +45,8 @@
             :disabled="selectedIndex === null || submitted"
             variant="primary"
             href="#"
-            >Submit <i
+            >Submit
+            <i
               v-if="selectedIndex !== null && !submitted"
               class="fa fa-arrow-circle-o-right"
               style="font-size:20px"
