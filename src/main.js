@@ -16,7 +16,7 @@ Vue.config.productionTip = false;
 const router = new VueRouter({
   routes: [
     // dynamic segments start with a colon
-    { path: "/app/:type/:id", component: App },
+    { path: "/app/:type/:id/:difficulty", component: App },
   ],
 });
 

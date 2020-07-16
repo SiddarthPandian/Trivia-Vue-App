@@ -54,12 +54,14 @@ export default {
     },
   },
   mounted: function() {
-    fetch(
-      `https://opentdb.com/api.php?amount=10&category=${this.$route.params.id}&type=multiple`,
-      {
-        method: "get",
-      }
-    )
+    if (this.$route.params.difficulty === "any") {
+      var url_api = `https://opentdb.com/api.php?amount=10&category=${this.$route.params.id}&type=multiple`;
+    } else {
+      url_api = `https://opentdb.com/api.php?amount=10&category=${this.$route.params.id}&type=multiple&difficulty=${this.$route.params.difficulty}`;
+    }
+    fetch(url_api, {
+      method: "get",
+    })
       .then((response) => {
         return response.json();
       })
