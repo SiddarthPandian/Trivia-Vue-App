@@ -1,5 +1,5 @@
 # Trivia Vue App
-Visit the app at: https://hopeful-mcclintock-0aed35.netlify.app/#/
+Visit the app at: test-your-knowledge.netlify.app
 
 A simple trivia application that helps you improve your genera knowledge. Open trivia database API was used for retrieving questions. Enjoy!
 
