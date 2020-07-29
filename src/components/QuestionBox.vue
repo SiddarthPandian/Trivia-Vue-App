@@ -5,7 +5,9 @@
         You Scored {{ numCorrect }} / {{ numTotal }}
         <div>
           <b-button @click="reload" variant="primary">Retry</b-button>
-          <router-link class="mybtn" to="/" tag="b-button">Home</router-link>
+          <a href="/">
+            <b-button>Home</b-button>
+          </a>
         </div>
       </b-jumbotron>
     </div>
@@ -45,13 +47,14 @@
             :disabled="selectedIndex === null || submitted"
             variant="primary"
             href="#"
-            >Submit
+          >
+            Submit
             <i
               v-if="selectedIndex !== null && !submitted"
               class="fa fa-arrow-circle-o-right"
               style="font-size:20px"
-            ></i
-          ></b-button>
+            ></i>
+          </b-button>
           <b-button
             @click="
               next();
@@ -62,11 +65,7 @@
             :disabled="!submitted"
           >
             Next
-            <i
-              v-if="submitted"
-              class="fa fa-arrow-circle-o-right"
-              style="font-size:20px"
-            ></i>
+            <i v-if="submitted" class="fa fa-arrow-circle-o-right" style="font-size:20px"></i>
           </b-button>
         </div>
       </b-jumbotron>
@@ -83,6 +82,7 @@ export default {
     numCorrect: Number,
     numTotal: Number,
     index: Number,
+    topic: String,
   },
   data() {
     return {
@@ -120,6 +120,31 @@ export default {
     },
     incMyCount() {
       this.myCounter += 1;
+      if (this.myCounter == 11) {
+        if (localStorage.getItem(this.topic) !== null) {
+          let retrievedObj = JSON.parse(localStorage.getItem(this.topic));
+          let oldAvg = parseFloat(retrievedObj.avg);
+          let numTot = parseFloat(retrievedObj.num);
+
+          console.log("oldAvg: ", oldAvg);
+          console.log("numTot: ", numTot);
+
+          let newAvg = (oldAvg * numTot + this.numCorrect) / (numTot + 1);
+          console.log(newAvg);
+          let newObj = {
+            avg: newAvg,
+            num: numTot + 1,
+          };
+
+          localStorage.setItem(this.topic, JSON.stringify(newObj));
+        } else {
+          let obj = {
+            avg: this.numCorrect,
+            num: 1,
+          };
+          localStorage.setItem(this.topic, JSON.stringify(obj));
+        }
+      }
     },
   },
   computed: {

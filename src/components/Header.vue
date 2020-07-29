@@ -1,13 +1,19 @@
 <template>
   <div>
-    <router-link
+    <!-- <router-link
       class="mybtn"
       to="/"
       tag="b-button"
       style="float: left; background: none; border: solid white; position: absolute; left: 50px; top: 10px;"
       ><i class="fa fa-arrow-circle-o-left" style="font-size:20px"></i>
       Home</router-link
-    >
+    >-->
+    <a href="/">
+      <b-button
+        class="mybtn"
+        style="float: left; background: none; border: solid white; position: absolute; left: 50px; top: 10px;"
+      >Home</b-button>
+    </a>
     <div class="header-container">
       <b-nav vertical tabs>
         <div class="header">{{ quizType }} Trivia</div>

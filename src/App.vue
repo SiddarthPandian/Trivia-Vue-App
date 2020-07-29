@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <Header
-      :quizType="this.$route.params.type"
-      :numCorrect="numCorrect"
-      :numTotal="numTotal"
-    />
+    <Header :quizType="this.$route.params.type" :numCorrect="numCorrect" :numTotal="numTotal" />
 
     <b-container class="bv-example-row">
       <b-row>
@@ -17,6 +13,7 @@
             :increment="increment"
             :numCorrect="numCorrect"
             :numTotal="numTotal"
+            :topic="this.$route.params.type"
           />
         </b-col>
         <b-col></b-col>
@@ -53,7 +50,7 @@ export default {
       this.numTotal++;
     },
   },
-  mounted: function() {
+  mounted: function () {
     if (this.$route.params.difficulty === "any") {
       var url_api = `https://opentdb.com/api.php?amount=10&category=${this.$route.params.id}&type=multiple`;
     } else {
