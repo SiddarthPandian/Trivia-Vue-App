@@ -80,6 +80,6 @@ export default {
 
 body {
   background: url("./assets/trivia.jpg");
-  background-size: 100%;
+  background-size: cover;
 }
 </style>
